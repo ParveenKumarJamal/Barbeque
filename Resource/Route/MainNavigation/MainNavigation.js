@@ -12,6 +12,11 @@ import HelpSupport from '../../Pages/Help_And_Support/Help_And_Support';
 import About from '../../Pages/About/About';
 import MyProfile from '../../Pages/MyProfile/MyProfile';
 import ViewOrder from '../../Pages/Order_History/ViewOrder/ViewOrder';
+import Restaurant_Info from '../../Pages/Restaurant_Info/Restaurant_Info';
+import AbstractLink from '../../Pages/About/AbstractLink';
+import Total from '../../Pages/Total/Total';
+import SignIn_UpScreen from '../../Pages/SignIn_SignUpScreen/SignIn_UpScreen';
+import SignUpScreen from '../../Pages/SignUpScreen/SignUpScreen';
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 export default function MainNavigation() {
@@ -45,6 +50,31 @@ const MenuNavigation = ()=>{
         <Stack.Screen 
         name="View"
          component={ViewOrder}
+         options={{headerShown:false}}
+         />
+        <Stack.Screen 
+        name="Info"
+         component={Restaurant_Info}
+         options={{headerShown:false}}
+         />
+        <Stack.Screen 
+        name="Link"
+         component={AbstractLink}
+         options={{headerShown:false}}
+         />
+        <Stack.Screen 
+        name="Total"
+         component={Total}
+         options={{headerShown:false}}
+         />
+        <Stack.Screen 
+        name="SignIn_Up"
+         component={SignIn_UpScreen}
+         options={{headerShown:false}}
+         />
+        <Stack.Screen 
+        name="SignUp"
+         component={SignUpScreen}
          options={{headerShown:false}}
          />
       </Stack.Navigator>

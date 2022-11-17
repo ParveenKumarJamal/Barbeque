@@ -33,7 +33,7 @@ import {
 import Swiper from 'react-native-swiper';
 import Styles from './MenuList_Style';
 export default function MenuList(props) {
-  const data = [
+  const Data = [
     {
       id: 0,
       name: 'Suppli Classico Pizza',
@@ -55,7 +55,7 @@ Mushroom,Onion
     },
   ];
   const [visible,setVisible] = useState(false)
-  const [cart, setCart] = useState(data);
+  const [cart, setCart] = useState(Data);
   const [Recomanded, setRecomanded] = useState(true);
   const [salad, setSalad] = useState(true);
   const [Pizza, setPizza] = useState(true);
@@ -77,7 +77,7 @@ Mushroom,Onion
       });
       setCart(newData);
     } else {
-      setCart(data);
+      setCart(Data);
     }
   };
 
@@ -400,291 +400,124 @@ Mushroom,Onion
               </View>
             </TouchableOpacity>
             {salad && (
-              <View
-                style={{
-                  backgroundColor: '#fff',
-                  marginBottom: heightToDp('4'),
-                }}>
-                <View style={{flexDirection: 'row'}}>
-                  <View>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                      <View
-                        style={{
-                          marginStart: widthToDp('5'),
-                          marginTop: heightToDp('3'),
-                        }}>
-                        <Image
-                          source={RDLogo}
-                          style={{
-                            height: heightToDp('3'),
-                            width: widthToDp('6'),
-                          }}
-                        />
-                      </View>
-                      <View
-                        style={{
-                          height: heightToDp('2.8'),
-                          justifyContent: 'center',
-                          marginTop: heightToDp('3'),
-                          marginStart: widthToDp('3'),
-                          width: widthToDp('19'),
-                          backgroundColor: 'rgb(234,113,60)',
-                          borderRadius: widthToDp('1.5'),
-                        }}>
-                        <Text
-                          style={{
-                            color: '#fff',
-                            textAlign: 'center',
-                            fontSize: widthToDp('3.5'),
-                          }}>
-                          Bestseller
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={{
-                        marginStart: widthToDp('5'),
-                        marginTop: heightToDp('1'),
-                      }}>
-                      <Text style={{color: '#000', fontSize: widthToDp('4.5')}}>
-                        Suppli Classico Pizza
-                      </Text>
-                      <View style={{flexDirection: 'row'}}>
-                        <View
-                          style={{
-                            borderWidth: 1,
-                            width: widthToDp('24'),
-                            height: heightToDp('3'),
-                            marginTop: heightToDp('1'),
-                            backgroundColor: 'rgb(255,255,237)',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                          }}>
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star-o"
-                            size={13}
-                            color={'#000'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                        </View>
-                        <View
-                          style={{
-                            justifyContent: 'center',
-                            marginStart: widthToDp('2'),
-                            marginTop: heightToDp('1'),
-                          }}>
-                          <Text style={{color: '#000'}}>82 reviews</Text>
-                        </View>
-                      </View>
-                      <View style={{marginTop: heightToDp('1')}}>
-                        <Text style={{color: '#000', fontWeight: 'bold'}}>
-                          ₹169
-                        </Text>
-                      </View>
+             <>
+             {cart.map((item,index)=>{
+              return(
+                <>
+
+                <View style={Styles.RecomandedListView}>
                       <View>
-                        <Text
+                        <View>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                            }}>
+                            <View
+                              style={{
+                                marginStart: widthToDp('5'),
+                                marginTop: heightToDp('3'),
+                              }}>
+                              <Image
+                                source={RDLogo}
+                                style={{
+                                  height: heightToDp('3'),
+                                  width: widthToDp('6'),
+                                }}
+                              />
+                            </View>
+                            <View
+                              style={{
+                                height: heightToDp('2.8'),
+                                justifyContent: 'center',
+                                marginTop: heightToDp('3'),
+                                marginStart: widthToDp('3'),
+                                width: widthToDp('19'),
+                                backgroundColor: 'rgb(234,113,60)',
+                                borderRadius: widthToDp('1.5'),
+                              }}>
+                              <Text
+                                style={{
+                                  color: '#fff',
+                                  textAlign: 'center',
+                                  fontSize: widthToDp('3.5'),
+                                }}>
+                                Bestseller
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
                           style={{
-                            color: '#a9a9a9',
-                            fontSize: widthToDp('3.5'),
+                            marginTop: heightToDp('1.5'),
+                            marginStart: widthToDp('5'),
+                            width: widthToDp('40'),
                           }}>
-                          Corn,Capsicum,Panner Topped{'\n'}With Mozzarella
-                          Cheese
-                        </Text>
+                          <Text
+                            style={{color: '#000', fontSize: widthToDp('4')}}>
+                            {item.name}
+                          </Text>
+                        </View>
+                        <View style={{marginStart: widthToDp('5')}}>
+                          <Text style={{color: '#000', fontWeight: 'bold'}}>
+                            ₹{item.Price}
+                          </Text>
+                        </View>
+                        <View
+                          style={{
+                            marginStart: widthToDp('5'),
+                            marginTop: heightToDp('1'),
+                            width: widthToDp('40'),
+                          }}>
+                          <Text
+                            style={{
+                              color: '#a9a9a9',
+                              fontSize: widthToDp('3.5'),
+                            }}>
+                            {item.subtitle}
+                          </Text>
+                        </View>
                       </View>
+                      {cart.includes(item)?(
+                        <View>
+                          <TouchableOpacity
+                            onPress={() =>props.navigation.navigate('Total',{Data:item})}>
+                            <View
+                              style={{
+                                borderWidth: 1,
+                                width: widthToDp('30'),
+                                height: heightToDp('5'),
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: widthToDp('1'),
+                                backgroundColor: 'rgb(255,247,246)',
+                                borderColor: 'rgb(236,85,94)',
+                                marginTop:heightToDp('8'),
+                                marginStart:widthToDp('15')
+                              }}>
+                              <Text style={{color: 'rgb(236,85,94)',fontSize:widthToDp('4'),fontWeight:'bold'}}>ADD</Text>
+                            </View>
+                          </TouchableOpacity>  
+
+                        </View>
+                      ):(
+                        <View>
+
+                        </View>
+                      )}
                     </View>
-                  </View>
-                  <TouchableOpacity>
                     <View
-                      style={{
-                        borderWidth: 1,
-                        height: heightToDp('6'),
-                        width: widthToDp('30'),
-                        marginStart: widthToDp('5'),
-                        marginTop: heightToDp('8'),
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: 'rgb(255,246,247)',
-                        borderColor: 'rgb(237,81,94)',
-                        borderRadius: widthToDp('2'),
-                      }}>
-                      <Text
-                        style={{
-                          color: 'rgb(237,81,94)',
-                          fontSize: widthToDp('5'),
-                        }}>
-                        ADD
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View
                   style={{alignItems: 'center', marginTop: heightToDp('3')}}>
                   <Text style={{color: '#a9a9a9'}}>
                     - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                   </Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
-                  <View>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                      <View
-                        style={{
-                          marginStart: widthToDp('5'),
-                          marginTop: heightToDp('3'),
-                        }}>
-                        <Image
-                          source={RDLogo}
-                          style={{
-                            height: heightToDp('3'),
-                            width: widthToDp('6'),
-                          }}
-                        />
-                      </View>
-                      <View
-                        style={{
-                          height: heightToDp('2.8'),
-                          justifyContent: 'center',
-                          marginTop: heightToDp('3'),
-                          marginStart: widthToDp('3'),
-                          width: widthToDp('19'),
-                          backgroundColor: 'rgb(234,113,60)',
-                          borderRadius: widthToDp('1.5'),
-                        }}>
-                        <Text
-                          style={{
-                            color: '#fff',
-                            textAlign: 'center',
-                            fontSize: widthToDp('3.5'),
-                          }}>
-                          Bestseller
-                        </Text>
-                      </View>
-                    </View>
-                    <View
-                      style={{
-                        marginStart: widthToDp('5'),
-                        marginTop: heightToDp('1'),
-                      }}>
-                      <Text style={{color: '#000', fontSize: widthToDp('4.5')}}>
-                        Veg Mexicano
-                      </Text>
-                      <View style={{flexDirection: 'row'}}>
-                        <View
-                          style={{
-                            borderWidth: 1,
-                            width: widthToDp('24'),
-                            height: heightToDp('3'),
-                            marginTop: heightToDp('1'),
-                            backgroundColor: 'rgb(255,255,237)',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                          }}>
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star"
-                            size={13}
-                            color={'rgb(244,191,15)'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                          <FontAwesome
-                            name="star-o"
-                            size={13}
-                            color={'#000'}
-                            style={{marginStart: widthToDp('1')}}
-                          />
-                        </View>
-                        <View
-                          style={{
-                            justifyContent: 'center',
-                            marginStart: widthToDp('2'),
-                            marginTop: heightToDp('1'),
-                          }}>
-                          <Text style={{color: '#000'}}>92 reviews</Text>
-                        </View>
-                      </View>
-                      <View style={{marginTop: heightToDp('1')}}>
-                        <Text style={{color: '#000', fontWeight: 'bold'}}>
-                          ₹199
-                        </Text>
-                      </View>
-                      <View>
-                        <Text
-                          style={{
-                            color: '#a9a9a9',
-                            fontSize: widthToDp('3.5'),
-                          }}>
-                          Fiery Paneer,Jalapnenos,Black{'\n'}Olives,Sweet
-                          Corn,Onions And{'\n'}Red Paprika Topped With{'\n'}
-                          Mozzarella Cheese{' '}
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                  <TouchableOpacity>
-                    <View
-                      style={{
-                        borderWidth: 1,
-                        height: heightToDp('6'),
-                        width: widthToDp('30'),
-                        marginStart: widthToDp('5'),
-                        marginTop: heightToDp('8'),
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: 'rgb(255,246,247)',
-                        borderColor: 'rgb(237,81,94)',
-                        borderRadius: widthToDp('2'),
-                      }}>
-                      <Text
-                        style={{
-                          color: 'rgb(237,81,94)',
-                          fontSize: widthToDp('5'),
-                        }}>
-                        ADD
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              </View>
+                    </>
+              )
+              
+             })}
+
+             </>
             )}
             <Text
               style={{

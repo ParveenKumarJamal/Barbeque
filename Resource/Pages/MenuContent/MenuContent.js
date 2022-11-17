@@ -32,16 +32,16 @@ export default function MenuContent(props) {
         <Text style={{color:'#000',fontSize:widthToDp('5.5')}}>My Addresses</Text>
 </View>  
 </TouchableOpacity> */}
-<TouchableOpacity>
+<TouchableOpacity onPress={()=>props.navigation.navigate('Info')}>
   <View style={{marginTop:heightToDp('3')}}>
-        <Text style={{color:'#000',fontSize:widthToDp('5.5')}}>Restourant Info</Text>
+        <Text style={{color:'#000',fontSize:widthToDp('5.5')}}>Restaurant Info</Text>
 </View>  
 </TouchableOpacity>
-<TouchableOpacity >
+{/* <TouchableOpacity >
   <View style={{marginTop:heightToDp('3')}}>
         <Text style={{color:'#000',fontSize:widthToDp('5.5')}}>Spacially for Guest</Text>
 </View>  
-</TouchableOpacity>
+</TouchableOpacity> */}
 <TouchableOpacity onPress={()=>props.navigation.navigate('My_Profile')}>
   <View style={{marginTop:heightToDp('3')}}>
         <Text style={{color:'#000',fontSize:widthToDp('5.5')}}>Profile</Text>

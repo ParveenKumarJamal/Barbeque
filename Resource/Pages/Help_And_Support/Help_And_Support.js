@@ -90,33 +90,24 @@ export default function HelpSupport(props) {
                 <Text style={{color:'#000',fontSize:widthToDp('5')}}>Call us</Text>
               </View>
               <View>
-                <Text style={{color:'#000',fontSize:widthToDp('4.3')}}>Talk to nice,friendly human{'\n'}+19096786650</Text>
+                <Text style={{color:'#000',fontSize:widthToDp('4.3')}}>Talk to nice,friendly human{'\n'}Contact at +33130383959</Text>
               </View>
             </View>
             <View style={{justifyContent:'center',marginEnd:widthToDp('5')}}>
              <Ionicons name='call' size={35} color={'#000'} />
             </View>
           </View>
-          <View style={{marginTop:heightToDp('5'),width:widthToDp('90'),height:heightToDp('12'),borderRadius:widthToDp('5'),flexDirection:'row',justifyContent:'space-between',elevation:5,backgroundColor:'#fff'}}>
-            <View style={{marginStart:widthToDp('8'),marginTop:heightToDp('1')}}>
-              <View>
-                <Text style={{color:'#000',fontSize:widthToDp('5')}}>Text us</Text>
-              </View>
-              <View>
-                <Text style={{color:'#000',fontSize:widthToDp('4.3')}}>Chat with a real person{'\n'}+19096786650</Text>
-              </View>
-            </View>
-            <View style={{justifyContent:'center',marginEnd:widthToDp('5')}}>
-             <FontAwesome name='whatsapp' size={35} color={'#000'} />
-            </View>
-          </View>
-          <View style={{marginTop:heightToDp('5'),width:widthToDp('90'),height:heightToDp('12'),borderRadius:widthToDp('5'),flexDirection:'row',justifyContent:'space-between',elevation:5,backgroundColor:'#fff'}}>
+          <View style={{marginTop:heightToDp('5'),width:widthToDp('90'),height:heightToDp('14'),borderRadius:widthToDp('5'),flexDirection:'row',justifyContent:'space-between',elevation:5,backgroundColor:'#fff'}}>
             <View style={{marginStart:widthToDp('8'),marginTop:heightToDp('1')}}>
               <View>
                 <Text style={{color:'#000',fontSize:widthToDp('5')}}>Email us</Text>
               </View>
               <View>
-                <Text style={{color:'#000',fontSize:widthToDp('4.3')}}>We'll get back to you soon{'\n'}gtmedia@gmail.com</Text>
+                <Text style={{color:'#000',fontSize:widthToDp('4.3')}}>Please visit are website{'\n'}for more information</Text>
+                <TouchableOpacity onPress={()=>props.navigation.navigate('Info')}>
+                <Text style={{color:'#000',fontSize:widthToDp('4.3'),fontWeight:'bold'}}>https://noor-mahal.fr/about-us/</Text>
+                </TouchableOpacity>
+               
               </View>
             </View>
             <View style={{justifyContent:'center',marginEnd:widthToDp('5')}}>

@@ -75,25 +75,9 @@ export default function About(props) {
                   show1 &&
                   <View style={{ height: heightToDp('10'), elevation: 0.5, backgroundColor: '#fff', bottom: heightToDp('1'), borderBottomStartRadius: widthToDp('3'), borderBottomEndRadius: widthToDp('3'), justifyContent: 'center' }}>
                     <View style={{marginStart:widthToDp('4')}}>
-                    <Text style={{color:'#000'}}>Version: 3.61</Text>
-                    <Text style={{color:'#000'}}>Build: 284</Text>
+                    <Text style={{color:'#000'}}>Version: 1.0</Text>
                     <Text style={{color:'#000'}}>@2022-NoorMahal.com</Text>
                     </View>
-                  </View>
-                }
-              </View>
-              <View>
-                <TouchableOpacity onPress={() => setShow2(!show2)}
-                  activeOpacity={1}>
-                  <View style={{ flexDirection: 'row', marginTop: heightToDp('3'), width: widthToDp('90'), height: heightToDp('7'), borderRadius: widthToDp('3'), elevation: 1, backgroundColor: '#fff', alignItems: 'center' }}>
-                    <View style={{ marginStart: widthToDp('4'), width: widthToDp('75') }}>
-                      <Text style={{ color: '#000' }}>Loyalty- Smile Coins Club</Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-                {show2 &&
-                  <View style={{ height: heightToDp('10'), elevation: 0.5, backgroundColor: '#fff', bottom: heightToDp('1'), borderBottomStartRadius: widthToDp('3'), borderBottomEndRadius: widthToDp('3'), justifyContent: 'center' }}>
-                    <Text style={{ color: '#000', fontSize: widthToDp('4'), paddingStart: widthToDp('4') }}>For corporate Booking write to us{'\n'}at dine@barbequenation.com or call{'\n'}+918069028721</Text>
                   </View>
                 }
               </View>
@@ -103,13 +87,20 @@ export default function About(props) {
                 >
                   <View style={{ flexDirection: 'row', marginTop: heightToDp('3'), width: widthToDp('90'), height: heightToDp('8'), borderRadius: widthToDp('3'), elevation: 3, backgroundColor: '#fff', alignItems: 'center' }}>
                     <View style={{ marginStart: widthToDp('4'), width: widthToDp('75') }}>
-                      <Text style={{ color: '#000' }}>Feed the Daily Wager</Text>
+                      <Text style={{ color: '#000' }}>Developer Info</Text>
                     </View>
                   </View>
                 </TouchableOpacity>
                 {show3 &&
                   <View style={{ height: heightToDp('10'), elevation: 0.5, backgroundColor: '#fff', bottom: heightToDp('1'), borderBottomStartRadius: widthToDp('3'), borderBottomEndRadius: widthToDp('3'), justifyContent: 'center' }}>
-                    <Text style={{ color: '#000', fontSize: widthToDp('4'), paddingStart: widthToDp('4') }}>You can book through our App or Website or{'\n'}Call- 8069028721</Text>
+                    <Text style={{ color: '#000', fontSize: widthToDp('4'), paddingStart: widthToDp('4') }}>If you have any APP related query</Text>
+                    <View style={{flexDirection:'row'}}>
+                    <Text style={{ color: '#000', fontSize: widthToDp('4'), paddingStart: widthToDp('4') }}>then visit us at</Text>
+                    <TouchableOpacity onPress={()=>props.navigation.navigate('Link')}>
+                    <Text style={{ color: '#000', fontSize: widthToDp('4'), paddingStart: widthToDp('3'),fontWeight:'bold' }}>Abstract Brains</Text>
+                    </TouchableOpacity>
+                    </View>
+                    
                   </View>
                 }
               </View>

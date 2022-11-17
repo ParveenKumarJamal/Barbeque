@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Switch, ImageBackground,ToastAndroid,Image,Alert } from 'react-native'
+import { View, Text, SafeAreaView, TouchableOpacity, Switch, ImageBackground,ToastAndroid,Image,Alert, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -17,8 +17,13 @@ export default function MyProfile(props) {
     const [isEnabled, setIsEnabled] = useState(true);
     const [Pic,setPic] = useState('');
     const [visible, setVisible] = useState(false);
+    const [select,setSelect] = useState(0);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     
+const edit = ()=>{
+    setSelect(!select);
+}
+
  const AddImage = ()=>{
     setVisible(!visible);
  }
@@ -91,16 +96,20 @@ const CameraImg = ()=>{
 
             </View>
             <View style={{ flexDirection: 'row-reverse' }}>
-                <TouchableOpacity>
+          
                     <View style={{ flexDirection: 'row', top: heightToDp('7'), marginEnd: widthToDp('5') }}>
                         <View>
                             <EvilIcons name='pencil' size={30} color={'#000'} />
                         </View>
-                        <View style={{ marginStart: widthToDp('4') }}>
-                            <Text style={{ color: '#000' }}>edit</Text>
-                        </View>
+                        <TouchableOpacity onPress={()=>edit()}>
+                         <View style={{ marginStart: widthToDp('4') }}>
+                            {select==0?<Text style={{color:'#000'}}>edit</Text>:
+                            <Text style={{color:'#000'}}>Update</Text>}
+                        </View> 
+                        </TouchableOpacity>
+
+
                     </View>
-                </TouchableOpacity>
 
             </View>
             <View style={{ alignItems: 'center' }}>
@@ -177,40 +186,135 @@ onBackButtonPress={AddImage}>
                     </View>
                 </View>
             </View>
+        {select==0?(
             <View style={{ marginStart: widthToDp('5'), marginTop: heightToDp('4') }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <View>
-                        <Feather name='phone-call' size={20} color={'#000'} />
-                    </View>
-                    <View style={{ marginStart: widthToDp('2') }}>
-                        <Text style={{ color: '#000' }}>+91 1234567891</Text>
-                    </View>
+            <View style={{ flexDirection: 'row' }}>
+                <View>
+                    <Feather name='phone-call' size={20} color={'#000'} />
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: heightToDp('3') }}>
-                    <View>
-                        <Fontisto name='email' size={20} color={'#000'} />
-                    </View>
-                    <View style={{ marginStart: widthToDp('1') }}>
-                        <Text style={{ color: '#a9a9a9' }}>add email</Text>
-                    </View>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: heightToDp('3') }}>
-                    <View>
-                        <FontAwesome5 name='birthday-cake' size={20} color={'#000'} />
-                    </View>
-                    <View style={{ marginStart: widthToDp('1') }}>
-                        <Text style={{ color: '#a9a9a9' }}>add birthday</Text>
-                    </View>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: heightToDp('3') }}>
-                    <View>
-                        <MaterialCommunityIcons name='glass-flute' size={20} color={'#000'} />
-                    </View>
-                    <View style={{ marginStart: widthToDp('1') }}>
-                        <Text style={{ color: '#a9a9a9' }}>add anniversary</Text>
-                    </View>
+                <View style={{ marginStart: widthToDp('2') }}>
+                    <Text style={{ color: '#000' }}>+91 1234567891</Text>
                 </View>
             </View>
+            <View style={{ flexDirection: 'row', marginTop: heightToDp('3') }}>
+                <View>
+                    <Fontisto name='email' size={20} color={'#000'} />
+                </View>
+                <View style={{ marginStart: widthToDp('1') }}>
+                    <Text style={{ color: '#a9a9a9' }}>add email</Text>
+                </View>
+            </View>
+            <View style={{ flexDirection: 'row', marginTop: heightToDp('3') }}>
+                <View>
+                    <FontAwesome5 name='birthday-cake' size={20} color={'#000'} />
+                </View>
+                <View style={{ marginStart: widthToDp('1') }}>
+                    <Text style={{ color: '#a9a9a9' }}>add birthday</Text>
+                </View>
+            </View>
+            <View style={{ flexDirection: 'row', marginTop: heightToDp('3') }}>
+                <View>
+                    <MaterialCommunityIcons name='glass-flute' size={20} color={'#000'} />
+                </View>
+                <View style={{ marginStart: widthToDp('1') }}>
+                    <Text style={{ color: '#a9a9a9' }}>add anniversary</Text>
+                </View>
+            </View>
+        </View>
+        ):(
+            <View style={{ marginStart: widthToDp('5'), marginTop: heightToDp('4') }}>
+            <View style={{ flexDirection: 'row',alignItems:'center' }}>
+                <View>
+                    <Feather name='phone-call' size={20} color={'#000'} />
+                </View>
+                <View style={{ marginStart: widthToDp('2') }}>
+                   <TextInput 
+                   placeholder='Enter Number'
+                   defaultValue='+91 1234567891'
+                   placeholderTextColor={'#000'}
+                   style={{color:'#000'}}
+                   />
+                                 <View style={{ alignItems: 'center',bottom:heightToDp('2')}}>
+                <Text
+                  style={{
+                    fontSize: 1,
+                    borderBottomWidth: 1,
+                    color: "#a9a9a9",
+                    width: widthToDp('50')
+                  }}
+                ></Text>
+              </View>
+                </View>
+            </View>
+            <View style={{ flexDirection: 'row',alignItems:'center' }}>
+                <View>
+                    <Fontisto name='email' size={20} color={'#000'} />
+                </View>
+                <View style={{ marginStart: widthToDp('1') }}>
+                    <TextInput 
+                    placeholder='add email'
+                    placeholderTextColor={'#000'}
+                    style={{color:'#000'}}
+                    />
+                                                     <View style={{ alignItems: 'center',bottom:heightToDp('2')}}>
+                <Text
+                  style={{
+                    fontSize: 1,
+                    borderBottomWidth: 1,
+                    color: "#a9a9a9",
+                    width: widthToDp('50')
+                  }}
+                ></Text>
+              </View>
+                </View>
+            </View>
+            <View style={{ flexDirection: 'row', alignItems:'center' }}>
+                <View style={{marginBottom:heightToDp('1')}}>
+                    <FontAwesome5 name='birthday-cake' size={20} color={'#000'} />
+                </View>
+                <View style={{ marginStart: widthToDp('1') }}>
+                    <TextInput 
+                    placeholder='add birthday'
+                    placeholderTextColor={'#000'}
+                    style={{color:'#000'}}
+                    />
+                                                                         <View style={{ alignItems: 'center',bottom:heightToDp('2')}}>
+                <Text
+                  style={{
+                    fontSize: 1,
+                    borderBottomWidth: 1,
+                    color: "#a9a9a9",
+                    width: widthToDp('50')
+                  }}
+                ></Text>
+              </View>
+                </View>
+            </View>
+            <View style={{ flexDirection: 'row',alignItems:'center'}}>
+                <View>
+                    <MaterialCommunityIcons name='glass-flute' size={20} color={'#000'} />
+                </View>
+                <View style={{ marginStart: widthToDp('1') }}>
+                  <TextInput 
+                  placeholder='add anniversary'
+                  placeholderTextColor={'#000'}
+                  style={{color:'#000'}}
+                  />
+                                                                                           <View style={{ alignItems: 'center',bottom:heightToDp('2')}}>
+                <Text
+                  style={{
+                    fontSize: 1,
+                    borderBottomWidth: 1,
+                    color: "#a9a9a9",
+                    width: widthToDp('50')
+                  }}
+                ></Text>
+              </View>
+                </View>
+            </View>
+        </View>
+        )}
+
         </SafeAreaView>
         <View style={{height:heightToDp('0.1')}}>
         <View style={{ bottom: heightToDp('10'),width:widthToDp('25') }}>
