@@ -32,7 +32,7 @@ export default function MenuContent(props) {
         <Text style={{color:'#000',fontSize:widthToDp('5.5')}}>My Addresses</Text>
 </View>  
 </TouchableOpacity> */}
-<TouchableOpacity onPress={()=>Info()}>
+<TouchableOpacity>
   <View style={{marginTop:heightToDp('3')}}>
         <Text style={{color:'#000',fontSize:widthToDp('5.5')}}>Restourant Info</Text>
 </View>  

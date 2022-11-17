@@ -15,6 +15,8 @@ import Slider2 from '../../Resource/Assets/Slider2.png'
 import FirstSlide from '../../Resource/Assets/FirstSlide.png'
 import PizzaLogo from '../../Resource/Assets/PizzaLogo.png'
 import SignInLogo from '../../Resource/Assets/SignInLogo.png'
+import Camera from '../../Resource/Assets/Camera.png'
+import Gallery from '../../Resource/Assets/Gallery.png'
 export {
 SplashLogo,
 HomeLogo,
@@ -32,7 +34,9 @@ Slide1,
 Slider2,
 FirstSlide,
 PizzaLogo,
-SignInLogo
+SignInLogo,
+Gallery,
+Camera
 
 
 

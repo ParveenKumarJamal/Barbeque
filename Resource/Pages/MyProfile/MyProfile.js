@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Switch } from 'react-native'
+import { View, Text, SafeAreaView, TouchableOpacity, Switch, ImageBackground,ToastAndroid,Image,Alert } from 'react-native'
 import React, { useState } from 'react'
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -9,10 +9,72 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { heightToDp, widthToDp } from '../../Utils/Responsive'
-
+import {launchImageLibrary,launchCamera} from 'react-native-image-picker'
+import { BottomSheet } from 'react-native-btr'
+import {Camera,Gallery} from '../../Utils/Image'
+import {Avatar} from 'react-native-paper'
 export default function MyProfile(props) {
     const [isEnabled, setIsEnabled] = useState(true);
+    const [Pic,setPic] = useState('');
+    const [visible, setVisible] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    
+ const AddImage = ()=>{
+    setVisible(!visible);
+ }
+ const  setToastmsg = msg=>{
+    ToastAndroid.showWithGravity(msg,ToastAndroid.SHORT,ToastAndroid.CENTER)
+}
+const Upload = ()=>{
+    let options = {
+        mediaType:'photo',
+        quality:1,
+        includeBase64:true
+    };
+  launchImageLibrary(options,response=>{
+    if(response.didCancel){
+        setToastmsg('Cancelled Image Selection');
+    }
+    else if(response.errorCode == 'permission'){
+        setToastmsg('permission not satisfied');
+    }
+    else if(response.errorCode == 'others'){
+        setToastmsg(response.errorMessage);
+    }
+    else if(response.assets[0].fileSize>2097152){
+        Alert.alert(
+            'Maximum image Size Expanded',
+            'Please choose image under 2 MB',
+            [{text:'OK'}]
+        )
+    }
+    else{
+        setPic(response.assets[0].base64);
+    }
+  });
+}
+const CameraImg = ()=>{
+    let options = {
+        mediaType:'photo',
+        quality:1,
+        includeBase64:true
+    };
+  launchCamera(options,response=>{
+    if(response.didCancel){
+        setToastmsg('Cancelled Image Selection');
+    }
+    else if(response.errorCode == 'permission'){
+        setToastmsg('permission not satisfied');
+    }
+    else if(response.errorCode == 'others'){
+        setToastmsg(response.errorMessage);
+    }
+    else{
+        setPic(response.assets[0].base64);
+    }
+  });
+}
+
 
     return (
         <>
@@ -44,7 +106,69 @@ export default function MyProfile(props) {
             <View style={{ alignItems: 'center' }}>
 
                 <View style={{ borderWidth: 1, width: widthToDp('100'), height: heightToDp('20'), alignItems: 'center', backgroundColor: 'rgb(54,63,68)', marginTop: heightToDp('10') }}>
-                    <View style={{ width: widthToDp('37'), height: heightToDp('19'), borderRadius: widthToDp('25'), elevation: 1, backgroundColor: '#fff', bottom: heightToDp('11') }}>
+                    <View style={{ bottom: heightToDp('10'),justifyContent:'center',alignItems:'center' }}>
+                     <Avatar.Image 
+                     size={150}
+                     source={{uri:'data:image/png;base64'+Pic}}
+                     />  
+                     <TouchableOpacity onPress={()=>AddImage()}>
+                                           <View style={{bottom:heightToDp('4')}}>
+                     <AntDesign name='camera' size={20} color={'#000'} />
+                    </View>   
+                     </TouchableOpacity>
+
+                    <View>
+<BottomSheet
+visible={visible}
+onBackButtonPress={AddImage}>
+<View style={{height:heightToDp('30'),backgroundColor:'rgb(30,47,55)',borderTopStartRadius:widthToDp('5'),borderTopEndRadius:widthToDp('5')}}>
+<View style={{marginStart:widthToDp('10'),marginTop:heightToDp('4')}}>
+    <Text style={{color:'#fff',fontSize:widthToDp('6')}}>Edit Image</Text>
+</View>
+<View style={{flexDirection:'row',marginTop:heightToDp('4')}}>
+   <View>
+    <TouchableOpacity>
+          <View style={{borderWidth:0.2,height:heightToDp('8'),width:widthToDp('16'),borderRadius:widthToDp('20'),justifyContent:'center',alignItems:'center',marginStart:widthToDp('6'),borderColor:'#fff'}}>
+     <View style={{height:heightToDp('6'),width:widthToDp('12'),borderRadius:widthToDp('20'),backgroundColor:'rgb(252,60,23)',justifyContent:'center',alignItems:'center'}} >
+      <MaterialCommunityIcons name='delete' size={25} color={'#fff'} />
+     </View>
+    </View> 
+    <View style={{alignItems:'center',marginStart:widthToDp('5')}}>
+        <Text style={{color:'#fff',fontSize:widthToDp('4')}}>Remove</Text>
+    </View>
+    </TouchableOpacity>
+   </View>
+<View>
+    <TouchableOpacity onPress={()=>CameraImg()}>
+               <View style={{borderWidth:1,height:heightToDp('8'),width:widthToDp('16'),borderRadius:widthToDp('20'),justifyContent:'center',alignItems:'center',marginStart:widthToDp('6'),borderColor:'#fff'}}>
+     <View style={{borderWidth:1,height:heightToDp('5'),width:widthToDp('10'),borderRadius:widthToDp('20'),justifyContent:'center',alignItems:'center'}} >
+      <Image source={Camera} style={{height:heightToDp('5'),width:widthToDp('10')}} />
+     </View>
+    </View>
+    <View style={{alignItems:'center',marginStart:widthToDp('5')}}>
+        <Text style={{color:'#fff',fontSize:widthToDp('4')}}>Camera</Text>
+    </View> 
+    </TouchableOpacity>
+</View>
+
+    <View>
+        <TouchableOpacity onPress={()=>Upload()}>
+        <View style={{borderWidth:1,borderColor:'#fff',height:heightToDp('8'),width:widthToDp('16'),borderRadius:widthToDp('20'),justifyContent:'center',alignItems:'center',marginStart:widthToDp('6')}}>
+     <View style={{height:heightToDp('5'),width:widthToDp('10'),borderRadius:widthToDp('20'),justifyContent:'center',alignItems:'center'}} >
+      <Image source={Gallery}  style={{height:heightToDp('5'),width:widthToDp('10')}}/>
+     </View>
+    </View> 
+    <View style={{alignItems:'center',marginStart:widthToDp('5')}}>
+        <Text style={{color:'#fff',fontSize:widthToDp('4')}}>Gallery</Text>
+    </View>
+        </TouchableOpacity>
+ 
+    </View>
+
+</View>
+</View>
+</BottomSheet>
+                    </View>
 
                     </View>
                     <View style={{ bottom: heightToDp('9'), flexDirection: 'row' }}>

@@ -18,6 +18,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {BottomSheet} from 'react-native-btr'
 import {
   DiwaliLogo,
   FirstSlide,
@@ -53,8 +54,7 @@ Mushroom,Onion
       quantity: 0,
     },
   ];
-
-  const [searchdata, setSearchData] = useState(data);
+  const [visible,setVisible] = useState(false)
   const [cart, setCart] = useState(data);
   const [Recomanded, setRecomanded] = useState(true);
   const [salad, setSalad] = useState(true);
@@ -64,16 +64,20 @@ Mushroom,Onion
   const [Sub, setSub] = useState(true);
   const [Wrap, setWrap] = useState(true);
 
+  const Add = ()=>{
+    
+  }
+
   const Search = input => {
     if (input) {
-      const newData = searchdata.filter(item => {
+      const newData = cart.filter(item => {
         const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
         const inputData = input.toUpperCase();
         return itemData.indexOf(inputData) > -1;
       });
-      setSearchData(newData);
+      setCart(newData);
     } else {
-      setSearchData(data);
+      setCart(data);
     }
   };
 
@@ -91,6 +95,7 @@ Mushroom,Onion
       });
       console.log(newArr);
       setCart(newArr);
+      setVisible(!visible);
       // settotalprice(istotalprice + parseInt(item.discount_price));
     }
   };
@@ -279,7 +284,7 @@ Mushroom,Onion
                             <View
                               style={{
                                 borderWidth: 1,
-                                width: widthToDp('28'),
+                                width: widthToDp('30'),
                                 height: heightToDp('5'),
                                 justifyContent: 'space-evenly',
                                 alignItems: 'center',
@@ -326,12 +331,15 @@ Mushroom,Onion
                             </View>
                           </View>
                         ) : (
+                          <View>
+
+
                           <TouchableOpacity
                             onPress={() => Increment(item, index)}>
                             <View
                               style={{
                                 borderWidth: 1,
-                                width: widthToDp('28'),
+                                width: widthToDp('30'),
                                 height: heightToDp('5'),
                                 justifyContent: 'center',
                                 alignItems: 'center',
@@ -342,7 +350,8 @@ Mushroom,Onion
                               }}>
                               <Text style={{color: 'rgb(236,85,94)',fontSize:widthToDp('4'),fontWeight:'bold'}}>ADD</Text>
                             </View>
-                          </TouchableOpacity>
+                          </TouchableOpacity>                          
+                          </View>
                         )}
                       </View>
                     </View>

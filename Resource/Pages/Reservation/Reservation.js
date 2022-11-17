@@ -81,11 +81,6 @@ const [Data,setData] = useState(data)
             <View style={Styles.Name}>
               <Text style={Styles.NameText}>{item.name}</Text>
             </View>
-            <TouchableOpacity onPress={()=>Dialer()}>
-              <View style={Styles.Call} >
-                <Text style={Styles.CallText}>Call</Text>
-              </View>
-            </TouchableOpacity>
           </View>
           <View style={Styles.Date}>
             <Text style={Styles.DateText}>Date:{item.Date}</Text>

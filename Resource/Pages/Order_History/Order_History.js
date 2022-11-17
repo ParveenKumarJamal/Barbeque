@@ -73,16 +73,7 @@ export default function Order_History(props) {
                 <Text style={{ color: '#000' }}>Date:{item.Date}</Text>
               </View>
               <View style={{ marginStart: widthToDp('6'), marginTop: heightToDp('0.7') }}>
-                <Text style={{ color: '#000' }}>Time:{item.Time}</Text>
-              </View>
-              <View style={{ marginStart: widthToDp('6'), marginTop: heightToDp('0.7') }}>
-                <Text style={{ color: '#000' }}>Number of Guest:{item.Guest}</Text>
-              </View>
-              <View style={{ marginStart: widthToDp('6'), marginTop: heightToDp('0.7') }}>
                 <Text style={{ color: '#000' }}>Spacial Instruction</Text>
-              </View>
-              <View style={{ marginStart: widthToDp('6'), marginTop: heightToDp('0.7') }}>
-                <Text style={{ color: '#000' }}>{item.Loaction}</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: heightToDp('2') }}>
                 <TouchableOpacity onPress={() => props.navigation.navigate('View')}>

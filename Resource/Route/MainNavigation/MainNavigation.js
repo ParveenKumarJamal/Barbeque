@@ -11,6 +11,7 @@ import Order_History from '../../Pages/Order_History/Order_History';
 import HelpSupport from '../../Pages/Help_And_Support/Help_And_Support';
 import About from '../../Pages/About/About';
 import MyProfile from '../../Pages/MyProfile/MyProfile';
+import ViewOrder from '../../Pages/Order_History/ViewOrder/ViewOrder';
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 export default function MainNavigation() {
@@ -41,11 +42,11 @@ const MenuNavigation = ()=>{
          component={MenuNavigation}
          options={{headerShown:false}}
          />
-        {/* <Stack.Screen 
+        <Stack.Screen 
         name="View"
          component={ViewOrder}
          options={{headerShown:false}}
-         /> */}
+         />
       </Stack.Navigator>
     </NavigationContainer>
   )
