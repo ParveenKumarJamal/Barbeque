@@ -11,8 +11,8 @@ export default function Total(props) {
         Linking.openURL('https://g.page/Noor-Mahal-osny?share')
     }
 
-    const [data, setdata] = useState(props.route.params.Data);
-    console.log(data);
+    const [Data, setdata] = useState(props.route.params.data);
+    console.log(Data);
     return (
         <>
                 <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -33,9 +33,9 @@ export default function Total(props) {
                                 <Image source={RDLogo} style={{ height: heightToDp('2'), width: widthToDp('4') }} />
                             </View>
                             <View style={{ marginStart: widthToDp('2') }}>
-                                <Text style={{ color: '#000', fontSize: widthToDp('3.8'), fontWeight: 'bold' }}>{data.name}</Text>
+                                <Text style={{ color: '#000', fontSize: widthToDp('3.8'), fontWeight: 'bold' }}>{Data.name}</Text>
                                 <View>
-                                    <Text style={{ color: '#000', fontSize: widthToDp('3.8'), paddingTop: heightToDp('0.5'), fontWeight: 'bold' }}>₹{data.Price}</Text>
+                                    <Text style={{ color: '#000', fontSize: widthToDp('3.8'), paddingTop: heightToDp('0.5'), fontWeight: 'bold' }}>₹{}</Text>
                                 </View>
 
                                 <View>
@@ -64,7 +64,7 @@ export default function Total(props) {
                                 </View>
                             </View>
                             <View style={{ marginStart: widthToDp('15'), marginTop: heightToDp('0.5') }}>
-                                <Text style={{ color: '#000', fontSize: widthToDp('4'), fontWeight: 'bold' }}>₹{data.Price}</Text>
+                                <Text style={{ color: '#000', fontSize: widthToDp('4'), fontWeight: 'bold' }}>₹{}</Text>
                             </View>
                         </View>
 
@@ -148,7 +148,7 @@ export default function Total(props) {
            <View style={{marginTop:heightToDp('1'),width:widthToDp('95'),height:heightToDp('8'),backgroundColor:'rgb(236,85,94)',flexDirection:'row',justifyContent:'space-between',borderRadius:widthToDp('2')}}>
            <View style={{justifyContent:'center',marginStart:widthToDp('4')}}>
             <View>
-                <Text style={{color:'#fff',fontSize:widthToDp('4.5')}}>₹{data.Price}</Text>
+                <Text style={{color:'#fff',fontSize:widthToDp('4.5')}}>₹{Data.Price}</Text>
                 <Text style={{color:'#fff',fontSize:widthToDp('4.5')}}>Total</Text>
             </View>
            </View>
